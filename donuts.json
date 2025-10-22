@@ -1,38 +1,44 @@
 [
     {
-        "id": 1, 
+        "id": 1,
         "name": "Plain Glazed Donut",
         "description": "Our classic cake donut covered in vanilla glaze",
-        "price": 1.99
+        "price": 1.99,
+        "image": "https://github.com/hjwatson6/Mod1_Final_Project/blob/main/glazedDonut.jpg"
     },
     {
         "id": 2,
         "name": "Chocolate Glazed Donut",
         "description": "Our classic cake donut covered in chocolate glaze",
-        "price": 2.99
+        "price": 2.99,
+        "image": "https://github.com/hjwatson6/Mod1_Final_Project/blob/main/chocolateGlazedDonut.jpg"
     },
     {
-        "id": 3, 
-        "name": "Strawberry Glazed Donut", 
+        "id": 3,
+        "name": "Strawberry Glazed Donut",
         "description": "Our classic cake donut covered in housemade strawberry glaze",
-        "price": 4.99
+        "price": 4.99,
+        "image": "https://github.com/hjwatson6/Mod1_Final_Project/blob/main/strawberryGlazedDonut.jpg"
     },
     {
-        "id": 4, 
+        "id": 4,
         "name": "Jelly-Filled Donut",
         "description": "Our raised cake donut filled with housemade jelly",
-        "price": 2.99
+        "price": 2.99,
+        "image": "https://github.com/hjwatson6/Mod1_Final_Project/blob/main/jellyFilledDonut.jpg"
     },
     {
-        "id": 5, 
+        "id": 5,
         "name": "Cream-Filled Donut",
         "description": "Our raised cake donut filled with custard cream",
-        "price": 3.99
+        "price": 3.99,
+        "image": "https://github.com/hjwatson6/Mod1_Final_Project/blob/main/creamFilledDonut.jpg"
     },
     {
-        "id": 6, 
+        "id": 6,
         "name": "Apple Fritter",
         "description": "Our deep fried donut filled with fresh apple and cinnamon",
-        "price": 5.99
+        "price": 5.99,
+        "image": "https://github.com/hjwatson6/Mod1_Final_Project/blob/main/appleFritter.jpg"
     }
 ]
