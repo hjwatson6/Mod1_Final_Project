@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1, 
+        "name": "Plain Glazed Donut",
+        "description": "Our classic cake donut covered in vanilla glaze",
+        "price": 1.99
+    },
+    {
+        "id": 2,
+        "name": "Chocolate Glazed Donut",
+        "description": "Our classic cake donut covered in chocolate glaze",
+        "price": 2.99
+    },
+    {
+        "id": 3, 
+        "name": "Strawberry Glazed Donut", 
+        "description": "Our classic cake donut covered in housemade strawberry glaze",
+        "price": 4.99
+    },
+    {
+        "id": 4, 
+        "name": "Jelly-Filled Donut",
+        "description": "Our raised cake donut filled with housemade jelly",
+        "price": 2.99
+    },
+    {
+        "id": 5, 
+        "name": "Cream-Filled Donut",
+        "description": "Our raised cake donut filled with custard cream",
+        "price": 3.99
+    },
+    {
+        "id": 6, 
+        "name": "Apple Fritter",
+        "description": "Our deep fried donut filled with fresh apple and cinnamon",
+        "price": 5.99
+    }
+]
