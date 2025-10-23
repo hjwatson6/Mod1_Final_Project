@@ -9,14 +9,23 @@
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
 <!-- Here is where the page design begins -->
-<body style= "background-color: #fff3c2" class="min-h-screen py-8">
+
+<body style="background-color: #fff3c2" class="min-h-screen py-8">
     <!-- Logo header with graphic design -->
-    <div class="flex items-center justify-center mb-4">
-        <img src=deliasDonuts.jpg alt="Delia's Donuts logo header image showing freshly glazed, colorful donuts."
-        class="object-fill rounded-2xl shadow-lg">
+    <header>
+        <div class="flex items-center justify-center mb-4">
+            <img src=deliasDonuts.jpg alt="Delia's Donuts logo header image showing freshly glazed, colorful donuts."
+                class="object-fill rounded-2xl shadow-lg">
+        </div>
+    </header>
+     <div class="flex justify-center mb-4">
+        <a href="/donutMenu.html"
+            class="bg-[#83e1e6] hover:bg-[#6dc4c9] text-[#38201c] font-bold text-2xl py-8 px-16 rounded-2xl inline-block text-center">
+            Donut Menu
+        </a>
     </div>
     <!-- This is where the login container begins -->
-    <div class="bg-white p-6 rounded-lg shadow-sm max-w-2xl mx-auto items-center justify-center">
+    <div class="bg-white p-6 rounded-lg shadow-sm max-w-2xl mx-auto items-center justify-center mb-4">
         <h2 class="text-3xl font-semibold text-gray-900 mb-6 items-center text-center">Login</h2>
         <form class="space-y-6">
             <div class="grid grid-cols gap-4">
@@ -57,7 +66,9 @@
             const email = emailInput.value.trim();
             const password = passInput.value.trim();
 
-            if (email && password) {
+            // The email and password entered needs to be exact to deliver success result; otherwise "please try again"
+            if (email == "test@test.com"
+                && password == "password") {
                 messageDiv.textContent = "Login successful!";
                 messageDiv.style.color = "green";
             } else {
@@ -74,4 +85,5 @@
         });
     </script>
 </body>
+
 </html>
