@@ -5,23 +5,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
+    <!-- Tailwind CSS integrated -->
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 </head>
-<body class="bg-gray-200 min-h-screen py-8">
+<!-- Here is where the page design begins -->
+<body style= "background-color: #fff3c2" class="min-h-screen py-8">
+    <!-- Logo header with graphic design -->
     <div class="flex items-center justify-center mb-4">
-        <img src=deliasDonuts.jpg>
+        <img src=deliasDonuts.jpg alt="Delia's Donuts logo header image showing freshly glazed, colorful donuts."
+        class="object-fill rounded-2xl shadow-lg">
     </div>
+    <!-- This is where the login container begins -->
     <div class="bg-white p-6 rounded-lg shadow-sm max-w-2xl mx-auto items-center justify-center">
         <h2 class="text-3xl font-semibold text-gray-900 mb-6 items-center text-center">Login</h2>
         <form class="space-y-6">
             <div class="grid grid-cols gap-4">
                 <div class="flex-1">
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                    <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
                     <input id="email" type="email"
                         class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-3 focus:ring-blue-500 focus:border-transparent">
                 </div>
                 <div class="flex-1">
-                    <label class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                    <label for="password" class="block text-sm font-medium text-gray-700 mb-2">Password</label>
                     <input id="password" type="password"
                         class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent">
                 </div>
@@ -33,21 +38,22 @@
                         class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Reset
                     </button>
                 </div>
-                <div id="message" class="mt-2 text-sm font-medium"></div>
+                <!-- Is the use of aria-live correct here? Chat recommended some updates for accessibility -->
+                <div id="message" class="mt-2 text-sm font-medium" aria-live="polite"></div>
             </div>
         </form>
     </div>
     <script>
-        console.log("Script loaded!");
-        const loginBtn = document.querySelector("#loginBtn");
-        const resetBtn = document.querySelector("#resetBtn");
-        const emailInput = document.querySelector("#email");
-        const passInput = document.querySelector("#password");
-        const messageDiv = document.querySelector("#message");
+        // Here is where the variables and functions begin. Intent is to alert user when input is correct, it delivers a success message.
+        // When input is incorrect, delivers a try again message. 
+        const loginBtn = document.getElementById("loginBtn");
+        const resetBtn = document.getElementById("resetBtn");
+        const emailInput = document.getElementById("email");
+        const passInput = document.getElementById("password");
+        const messageDiv = document.getElementById("message");
 
-        // Login event listener
         loginBtn.addEventListener("click", function (event) {
-            event.preventDefault(); // Prevents form refresh
+            // not sure if this trim function is supportive or not?
             const email = emailInput.value.trim();
             const password = passInput.value.trim();
 
@@ -60,14 +66,12 @@
             }
         });
 
-        // Reset event listener
+        // Reset event listener, clears the fields
         resetBtn.addEventListener("click", function (event) {
-            event.preventDefault();
             emailInput.value = "";
             passInput.value = "";
-            messageDiv.textContent = ""; // clear message on reset
+            messageDiv.textContent = "";
         });
     </script>
 </body>
-
 </html>
