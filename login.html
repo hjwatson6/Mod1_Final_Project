@@ -70,8 +70,8 @@
             const password = passInput.value.trim();
 
             // The email and password entered needs to be exact to deliver success result; otherwise "please try again"
-            if (email == "test@test.com"
-                && password == "password") {
+            if (email === "test@test.com"
+                && password === "password") {
                 messageDiv.textContent = "Login successful!";
                 messageDiv.style.color = "green";
             } else {
