@@ -16,7 +16,7 @@
     {
         "id": 3,
         "name": "Strawberry Glazed Donut",
-        "description": "Our classic cake donut covered in housemade strawberry glaze",
+        "description": "Our classic cake donut covered in strawberry glaze",
         "price": 4.99,
         "image": "https://raw.githubusercontent.com/hjwatson6/Mod1_Final_Project/main/strawberryGlazedDonut.jpg"
     },
