@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donut Menu</title>
+    <!-- Integrated Tailwind CSS elements below -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<!-- Here is where the page design begins -->
+
+<body style="background-color: #fff3c2" class="min-h-screen">
+    <!-- This is the header including navigation links to the login and payment pages as well as a home button that refreshes the donutMenu page -->
+    <header style="background-color: #83e1e6" class="flex items-center justify-center p-10 shadow-lg">
+        <h1 class="text-[#38201c] text-4xl font-bold text-center">Delia's Donuts</h1>
+        <nav class="flex gap-6 flex-1 justify-end">
+            <a href="/donutMenu.html" class="font-bold text-[#38201c] hover:text-white hover:cursor-pointer">Home</a>
+            <a href="/login.html" class="font-bold text-[#38201c] hover:text-white hover:cursor-pointer">Login</a>
+            <a href="/payment.html" class="font-bold text-[#38201c] hover:text-white hover:cursor-pointer">Payment</a>
+            <!-- This is a button for the shopping Cart which when pushed will display all the "add to cart" items and the total cost -->
+            <button id="cartButton"
+                class="bg-amber-300 hover:bg-amber-400 text-[#38201c] font-bold px-4 py-2 rounded-lg ml-4 hover:cursor-pointer">
+                🛒 Cart
+            </button>
+
+        </nav>
+    </header>
+    <!-- This is where the menu portion of the page begins -->
+    <main class="container mx-auto mt-8 py-8 px-4">
+        <h2 class="text-3xl font-bold text-center mb-8">Our Donuts</h2>
+        <div id="menu-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Donuts will be loaded here -->
+            <p class="text-center col-span-full">Menu is loading...</p>
+        </div>
+    </main>
+
+    <script>
+        // Here is the event listener that waits for DOM to fully load and then fetches the JSON files data. Async JS function with try and catch to ensure database comms 
+        // User is notified if database is not loading properly, because waits for DOM content; doesn't interfere with other elements loading
+        document.addEventListener("DOMContentLoaded", async () => {
+            try {
+                const response = await fetch("donuts.json");
+                if (!response.ok) throw new Error("Network response was not ok");
+                const data = await response.json();
+                displayDonuts(data);
+            } catch (error) {
+                document.getElementById("menu-container").innerHTML = `
+            <p class="text-red-500 text-center col-span-full">
+                Failed to load menu. Please try again later.
+            </p>
+        `;
+                console.error("Error fetching donuts:", error);
+            }
+        });
+
+        function displayDonuts(donuts) {
+            const menuContainer = document.getElementById("menu-container");
+            menuContainer.innerHTML = ""; 
+
+            donuts.forEach(donut => {
+                const donutItem = document.createElement("article");
+                donutItem.className = "bg-white rounded-xl shadow-md ring-1 ring-amber-100";
+
+                donutItem.innerHTML = `
+      <img src="${donut.image}" alt="${donut.name}" class="w-full h-48 object-contain rounded-t-xl bg-gray-100">
+      <div class="p-4">
+        <h3 class="font-semibold text-xl text-amber-900 mb-1">${donut.name}</h3>
+        <p class="text-gray-600 mb-2">${donut.description}</p>
+        <p class="text-amber-700 font-bold mb-3">$${donut.price.toFixed(2)}</p>
+        <button 
+          class="add-to-cart bg-green-400 hover:bg-green-500 text-white px-3 py-2 rounded-lg block mx-auto mt-3 hover:cursor-pointer"
+          data-donut="${donut.name}"
+          data-price="${donut.price}">
+          Add to Cart
+        </button>
+      </div>
+    `;
+                menuContainer.appendChild(donutItem);
+            });
+                activateCartButtons();
+        }
+        let shoppingCart = [];
+
+        function activateCartButtons() {
+            const buttons = document.querySelectorAll(".add-to-cart");
+
+            buttons.forEach(button => {
+                button.addEventListener("click", () => {
+                    const donutName = button.dataset.donut;
+                    const donutPrice = parseFloat(button.dataset.price);
+
+                    shoppingCart.push({ name: donutName, price: donutPrice });
+                    console.log("Added to cart:", donutName);
+                    console.log("Current cart:", shoppingCart);
+                    alert(`${donutName} added to cart!`);
+                });
+            });
+        }
+        
+        document.getElementById("cartButton").addEventListener("click", () => {
+            if (shoppingCart.length === 0){
+                alert("Your cart is empty!");
+            } else {
+                let cartList = shoppingCart.map(item=> `${item.name} - $${item.price.toFixed(2)}`).join("\n");
+                let cartTotal = shoppingCart.reduce((accumulator, item)=> accumulator + item.price, 0)
+                alert(`Your cart:\n${cartList}\nYour total:\n$${cartTotal.toFixed(2)}`)
+            }
+        });
+
+    </script>
+</body>
+
+</html>
