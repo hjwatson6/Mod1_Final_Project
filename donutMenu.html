@@ -54,10 +54,11 @@
             }
         });
 
+        // This is the function that dynamically pulls the information from the json database and displays on the page with Tailwind styling
         function displayDonuts(donuts) {
             const menuContainer = document.getElementById("menu-container");
             menuContainer.innerHTML = ""; 
-
+// This method loops through the array of objects in the json and for each donut it displays and styles according to these Tailwind CSS class markers and HTML tags
             donuts.forEach(donut => {
                 const donutItem = document.createElement("article");
                 donutItem.className = "bg-white rounded-xl shadow-md ring-1 ring-amber-100";
@@ -76,6 +77,7 @@
         </button>
       </div>
     `;
+    // This method calls forward the display so that all donuts are displayed on the page and calls the cart buttons so that add to cart buttons are displayed under each donut
                 menuContainer.appendChild(donutItem);
             });
                 activateCartButtons();
@@ -97,7 +99,9 @@
                 });
             });
         }
-        
+        // This is a method that makes the shopping cart button in the nav bar functional- when you click on the shopping Cart icon, it displays not only the items
+        // that you added in your shopping cart with the item name and price, but it also sums up your items and includes the total displayed there as well
+        // If you haven't utilized any of the add to cart buttons, or there was a refresh, the shopping Cart button will display the alert "Your cart is empty"
         document.getElementById("cartButton").addEventListener("click", () => {
             if (shoppingCart.length === 0){
                 alert("Your cart is empty!");
@@ -107,7 +111,7 @@
                 alert(`Your cart:\n${cartList}\nYour total:\n$${cartTotal.toFixed(2)}`)
             }
         });
-
+// This is the end of the donut Menu page
     </script>
 </body>
 
